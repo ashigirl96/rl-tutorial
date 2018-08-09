@@ -1,0 +1,86 @@
+% 文字コードはUTF-8にする
+% \documentclass[uplatex,b5j]{jsarticle} % uplatexオプションを入れる
+\documentclass[uplatex, report]{jsbook} % uplatexオプションを入れる
+
+\input{math.tex}
+%\documentclass[b5j]{ujarticle}        % jarticle系にしたい場合はこっち
+\usepackage[scale=.8]{geometry}      % ページレイアウトを変更してみる
+\usepackage[T1]{fontenc}             % T1エンコーディングにしてみる
+% \usepackage{txfonts}                 % 欧文フォントを変えてみる
+% \usepackage{plext}                   % pLaTeX付属の縦書き支援パッケージ
+\usepackage{okumacro}                % jsclassesに同梱のパッケージ
+
+\usepackage{times} % use Times Font instead of Computer Modern
+
+\usepackage{graphicx} % for \includegraphics[width=3cm]{sample.eps}
+\usepackage{fancybox} 
+\usepackage{ascmac}
+\usepackage{listings}%, jlisting}
+\usepackage{here}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={My title},    % title
+    pdfauthor={Author},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keyword1, key2, key3}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+ 
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage{url}
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}} % 表
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}} %
+
+%% 自分で定義したマクロ
+\makeatletter
+\renewcommand{\theequation}{%
+  \thesection.\arabic{equation}}
+ \@addtoreset{equation}{section}
+\makeatother
+
+
+\begin{document}
+\title{Reinforcement Learning -- Tutorial}
+\author{西村　礼恩}
+\西暦\maketitle                      % 漢字のマクロ名もOK
+\tableofcontents
+
+\input{fundamental.tex}
+
+\input{impl.tex}
+
+% \input{pytorch.tex}
+
+% \input{lesson.tex}
+
+% \input{latex.tex}
+
+% \input{ref.tex}
+
+\end{document}
